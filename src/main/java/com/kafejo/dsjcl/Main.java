@@ -55,7 +55,7 @@ public class Main {
         System.out.println(stocks.getAvailableProducts(customerAdministration.getCustomer(1).getShoppingCart()));
 
         Ls ls = new Ls();
-        ls.ls("/");
+        ls.run();
     }
 
     @NotNull

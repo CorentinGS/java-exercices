@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 public class Ls {
-    public static void main(String[] args) {
+    public void run() {
         Ls ls = new Ls();
         ls.ls();
 
