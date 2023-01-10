@@ -29,28 +29,23 @@ public class Ls {
 
         ls.lslong("./yoyo/toto");
 
-        mv("./yoyo/toto/tata.txt", "./yoyo/toto/titi.txt");
+        final String path = "./yoyo/toto/tata.txt";
+        final String path2 = "./yoyo/toto/titi.txt";
+
+        mv(path, path2);
 
         String result = wc("./src/main/java/com/kafejo/dsjcl/filesystem/Ls.java");
 
-        File file = new File("./yoyo/toto/titi.txt");
+        File file = new File(path2);
 
 
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(file);
+        try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(result);
         } catch (IOException e) {
             e.printStackTrace();
-        } finally{
-            try {
-                Objects.requireNonNull(fileWriter).close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
-        System.out.println(cat("./yoyo/toto/titi.txt"));
+        System.out.println(cat(path2));
 
         rmdir("./yoyo");
     }
@@ -58,8 +53,7 @@ public class Ls {
     public static String cat(@NotNull String path) {
         File file = new File(path);
         StringBuilder result = new StringBuilder();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 result.append(line).append("\n");
@@ -73,13 +67,11 @@ public class Ls {
     @NotNull
     public static String wc(final String path) {
         File file = new File(path);
-        FileReader fileReader = null;
-        BufferedReader bufferedReader = null;
-        int words = 0; int lines = 0; int chars = 0;
-        try {
-            fileReader = new FileReader(file);
-
-            bufferedReader = new BufferedReader(fileReader);
+        int words = 0;
+        int lines = 0;
+        int chars = 0;
+        try (FileReader fileReader = new FileReader(file);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
                 lines += 1;
@@ -91,13 +83,6 @@ public class Ls {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                Objects.requireNonNull(bufferedReader).close();
-                fileReader.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
 
         return "lines: " + lines + " words: " + words + " characters: " + chars;
@@ -158,10 +143,9 @@ public class Ls {
 
     @NotNull
     private static String getPermissions(@NotNull File file) {
-        String sb = (file.canRead() ? "r" : "-") +
+        return (file.canRead() ? "r" : "-") +
                 (file.canWrite() ? "w" : "-") +
                 (file.canExecute() ? "x" : "-");
-        return sb;
     }
 
     private static long getSize(@NotNull File file) {
@@ -229,7 +213,7 @@ public class Ls {
         File[] root = new File(path).listFiles();
         if (root != null) {
             for (File file : root) {
-               // Show permissions
+                // Show permissions
                 System.out.print(getPermissions(file) + "  ");
                 // Show size
                 System.out.print(getSize(file) + "k  ");
