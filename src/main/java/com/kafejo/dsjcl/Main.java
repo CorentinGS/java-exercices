@@ -1,5 +1,6 @@
 package com.kafejo.dsjcl;
 
+import com.kafejo.dsjcl.filesystem.Ls;
 import com.kafejo.dsjcl.shop.*;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +22,7 @@ public class Main {
         book.setPublisher("Allen & Unwin");
         book.setNumberOfPages(1216);
 
-        System.out.println(book.toString());
+        System.out.println(book);
 
         Customer customer;
         customer = new Customer("John", "Doe",
@@ -53,6 +54,8 @@ public class Main {
 
         System.out.println(stocks.getAvailableProducts(customerAdministration.getCustomer(1).getShoppingCart()));
 
+        Ls ls = new Ls();
+        ls.ls("/");
     }
 
     @NotNull
