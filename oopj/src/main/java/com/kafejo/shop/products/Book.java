@@ -1,11 +1,13 @@
 package com.kafejo.shop.products;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Book extends Product {
 
     private String author;
     private int pages;
 
-    public Book(String name, double price, String author, int pages) {
+    public Book(String name, double price, String author, int pages) throws ProductException {
         super(name, price);
         this.author = author;
         this.pages = pages;
@@ -27,4 +29,8 @@ public class Book extends Product {
         this.pages = pages;
     }
 
+    @Override
+    public int compareTo(@NotNull Product o) {
+        return 0;
+    }
 }

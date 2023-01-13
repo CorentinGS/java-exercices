@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CustomerDatabase {
+public class CustomerDatabase implements CustomerStorage {
     private final HashMap<Integer, Customer> customers;
 
     public CustomerDatabase() {
@@ -23,6 +23,11 @@ public class CustomerDatabase {
 
     public void removeCustomer(int id) {
         customers.remove(id);
+    }
+
+    @Override
+    public void updateCustomer(int id, Customer customer) {
+        customers.replace(id, customer);
     }
 
     public Set<Customer> getCustomers() {
