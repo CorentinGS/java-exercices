@@ -1,4 +1,4 @@
-# dsjcl-exercices
+# java-exercices
 
 A repo to keep training exercises for a java course.
 
