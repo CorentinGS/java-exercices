@@ -1,6 +1,8 @@
 package com.corentings.ex1;
 
-import org.jetbrains.annotations.NotNull;public class Main {
+import org.jetbrains.annotations.NotNull;
+
+public class Main {
 
 
     public static void main(String[] args) {

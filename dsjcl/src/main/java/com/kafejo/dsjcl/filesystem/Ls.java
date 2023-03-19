@@ -9,47 +9,6 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 public class Ls {
-    public void run() {
-        Ls ls = new Ls();
-        ls.ls();
-
-        System.out.println();
-        ls.lsdir("./src/main/java/com/kafejo/dsjcl");
-
-        String separator = File.separator;
-        System.out.println();
-
-        ls.lsfile("." + separator + "src" + separator + "main" + separator + "java" + separator + "com" + separator + "kafejo" + separator + "dsjcl");
-        System.out.println();
-        System.out.println();
-
-        mkdir("./yoyo/toto");
-
-        touch("./yoyo/toto/tata.txt");
-
-        ls.lslong("./yoyo/toto");
-
-        final String path = "./yoyo/toto/tata.txt";
-        final String path2 = "./yoyo/toto/titi.txt";
-
-        mv(path, path2);
-
-        String result = wc("./src/main/java/com/kafejo/dsjcl/filesystem/Ls.java");
-
-        File file = new File(path2);
-
-
-        try (FileWriter fileWriter = new FileWriter(file)) {
-            fileWriter.write(result);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(cat(path2));
-
-        rmdir("./yoyo");
-    }
-
     public static String cat(@NotNull String path) {
         File file = new File(path);
         StringBuilder result = new StringBuilder();
@@ -70,8 +29,7 @@ public class Ls {
         int words = 0;
         int lines = 0;
         int chars = 0;
-        try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+        try (FileReader fileReader = new FileReader(file); BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
                 lines += 1;
@@ -87,7 +45,6 @@ public class Ls {
 
         return "lines: " + lines + " words: " + words + " characters: " + chars;
     }
-
 
     public static void rmdir(final String path) {
         File file = new File(path);
@@ -143,9 +100,7 @@ public class Ls {
 
     @NotNull
     private static String getPermissions(@NotNull File file) {
-        return (file.canRead() ? "r" : "-") +
-                (file.canWrite() ? "w" : "-") +
-                (file.canExecute() ? "x" : "-");
+        return (file.canRead() ? "r" : "-") + (file.canWrite() ? "w" : "-") + (file.canExecute() ? "x" : "-");
     }
 
     private static long getSize(@NotNull File file) {
@@ -165,6 +120,47 @@ public class Ls {
     @NotNull
     private static String getName(@NotNull File file) {
         return file.getName();
+    }
+
+    public void run() {
+        Ls ls = new Ls();
+        ls.ls();
+
+        System.out.println();
+        ls.lsdir("./src/main/java/com/kafejo/dsjcl");
+
+        String separator = File.separator;
+        System.out.println();
+
+        ls.lsfile("." + separator + "src" + separator + "main" + separator + "java" + separator + "com" + separator + "kafejo" + separator + "dsjcl");
+        System.out.println();
+        System.out.println();
+
+        mkdir("./yoyo/toto");
+
+        touch("./yoyo/toto/tata.txt");
+
+        ls.lslong("./yoyo/toto");
+
+        final String path = "./yoyo/toto/tata.txt";
+        final String path2 = "./yoyo/toto/titi.txt";
+
+        mv(path, path2);
+
+        String result = wc("./src/main/java/com/kafejo/dsjcl/filesystem/Ls.java");
+
+        File file = new File(path2);
+
+
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write(result);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(cat(path2));
+
+        rmdir("./yoyo");
     }
 
     public void ls(final String path) {

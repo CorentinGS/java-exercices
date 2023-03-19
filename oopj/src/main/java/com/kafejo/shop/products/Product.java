@@ -3,6 +3,12 @@ package com.kafejo.shop.products;
 public abstract class Product implements Comparable<Product> {
 
     private String name;
+    private double price;
+
+    protected Product(String name, double price) throws ProductException {
+        this.name = name;
+        setPrice(price);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -21,13 +27,6 @@ public abstract class Product implements Comparable<Product> {
         temp = Double.doubleToLongBits(getPrice());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
-    }
-
-    private double price;
-
-    protected Product(String name, double price) throws ProductException {
-        this.name = name;
-        setPrice(price);
     }
 
     public String getName() {

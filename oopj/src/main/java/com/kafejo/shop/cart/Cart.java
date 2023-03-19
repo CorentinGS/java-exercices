@@ -1,6 +1,7 @@
 package com.kafejo.shop.cart;
 
 import com.kafejo.shop.products.Product;
+
 import java.util.SortedMap;
 
 import java.util.TreeMap;
@@ -30,9 +31,7 @@ public class Cart {
     }
 
     public double getTotalPrice() {
-        return products.entrySet().stream()
-                .mapToDouble(entry -> entry.getKey().getPrice() * entry.getValue())
-                .sum();
+        return products.entrySet().stream().mapToDouble(entry -> entry.getKey().getPrice() * entry.getValue()).sum();
     }
 
     public int getNumberOfProducts() {

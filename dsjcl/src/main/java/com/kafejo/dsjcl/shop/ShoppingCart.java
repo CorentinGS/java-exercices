@@ -6,8 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ShoppingCart {
-    private float price;
     private final List<Product> products = new LinkedList<>();
+    private float price;
 
     public void addProduct(Product product) {
         products.add(product);

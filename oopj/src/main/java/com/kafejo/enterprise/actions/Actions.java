@@ -15,17 +15,6 @@ public class Actions {
 
     private Worker worker;
 
-    @Override
-    public String toString() {
-        return "Actions{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", client=" + client +
-                ", worker=" + worker +
-                '}';
-    }
-
     public Actions(String name, String description) {
         this.id = nextId++;
         this.name = name;
@@ -38,6 +27,11 @@ public class Actions {
         this.client = client;
         this.worker = worker;
         this.id = nextId++;
+    }
+
+    @Override
+    public String toString() {
+        return "Actions{" + "id=" + id + ", name='" + name + '\'' + ", description='" + description + '\'' + ", client=" + client + ", worker=" + worker + '}';
     }
 
     public int getId() {

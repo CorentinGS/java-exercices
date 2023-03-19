@@ -77,8 +77,7 @@ public class Customer implements Comparable<Customer>, Cloneable {
 
     @Override
     public String toString() {
-        return "Customer: " + getFirstName() + " " + getLastName() + ", email: " + getEmail() + ", date of birth: " + getDateOfBirth() +
-                ", sex: " + getSex() + ", id: " + getId();
+        return "Customer: " + getFirstName() + " " + getLastName() + ", email: " + getEmail() + ", date of birth: " + getDateOfBirth() + ", sex: " + getSex() + ", id: " + getId();
     }
 
     @Override
@@ -111,11 +110,12 @@ public class Customer implements Comparable<Customer>, Cloneable {
         return result;
     }
 
-/**
-* Compares this object with the specified object for order.
- * @param o the object to be compared.
- * @return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
- */
+    /**
+     * Compares this object with the specified object for order.
+     *
+     * @param o the object to be compared.
+     * @return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
+     */
     @Override
     public int compareTo(Customer o) {
         return this.getId() - o.getId();

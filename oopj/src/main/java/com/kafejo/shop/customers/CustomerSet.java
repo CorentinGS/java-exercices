@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CustomerSet implements CustomerStorage{
+public class CustomerSet implements CustomerStorage {
 
     private final HashSet<Customer> customers;
 
@@ -22,10 +22,7 @@ public class CustomerSet implements CustomerStorage{
 
     @Override
     public Customer getCustomer(int id) {
-        return customers.stream()
-                .filter(customer -> customer.getID() == id)
-                .findFirst()
-                .orElse(null);
+        return customers.stream().filter(customer -> customer.getID() == id).findFirst().orElse(null);
     }
 
     @Override
@@ -46,10 +43,7 @@ public class CustomerSet implements CustomerStorage{
 
     @Override
     public Customer getCustomer(@NotNull Customer customer) {
-        return customers.stream()
-                .filter(c -> c.getID() == customer.getID())
-                .findFirst()
-                .orElse(null);
+        return customers.stream().filter(c -> c.getID() == customer.getID()).findFirst().orElse(null);
     }
 
     @Override

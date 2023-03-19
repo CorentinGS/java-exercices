@@ -2,12 +2,10 @@ package com.kafejo.shop.customers;
 
 public class Customer {
 
+    private static int nextID = 0;
+    private final int id;
     private String name;
     private String email;
-
-    private final int id;
-
-    private static int nextID = 0;
 
     public Customer(String name, String email) {
         this.id = getNextID();
@@ -15,16 +13,20 @@ public class Customer {
         this.email = email;
     }
 
+    private static int getNextID() {
+        return nextID++;
+    }
+
     public String getName() {
         return name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
@@ -33,10 +35,6 @@ public class Customer {
 
     public int getID() {
         return id;
-    }
-
-    private static int getNextID() {
-        return nextID++;
     }
 
 

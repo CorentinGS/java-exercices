@@ -3,6 +3,7 @@ package com.kafejo.enterprise.humans;
 public class Worker extends Human {
 
     private int salary;
+
     protected Worker(String name, int age, Gender gender) {
         super(name, age, gender);
     }

@@ -38,12 +38,7 @@ public abstract class Human {
 
     @Override
     public String toString() {
-        return "Human{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", gender=" + gender +
-                ", id=" + id +
-                '}';
+        return "Human{" + "name='" + name + '\'' + ", age=" + age + ", gender=" + gender + ", id=" + id + '}';
     }
 
     public int getId() {

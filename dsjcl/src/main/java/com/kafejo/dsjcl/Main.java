@@ -13,9 +13,9 @@ public class Main {
     static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
-       logger.info("Hello World!");
+        logger.info("Hello World!");
 
-       // Create a book
+        // Create a book
         Book book;
         book = new Book("The Lord of the Rings", 22.5);
 
@@ -26,13 +26,11 @@ public class Main {
         System.out.println(book);
 
         Customer customer;
-        customer = new Customer("John", "Doe",
-                "john.doe@mail.com", new Date(), "M");
+        customer = new Customer("John", "Doe", "john.doe@mail.com", new Date(), "M");
 
 
         Customer customer2;
-        customer2 = new Customer("Jane", "Doe",
-                "jane.doe@mail.com", new Date(), "F");
+        customer2 = new Customer("Jane", "Doe", "jane.doe@mail.com", new Date(), "F");
 
 
         CustomerAdministration customerAdministration = new CustomerAdministration(customer, customer2);

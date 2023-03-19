@@ -17,12 +17,12 @@ public class Book extends Product {
         return author;
     }
 
-    public int getPages() {
-        return pages;
-    }
-
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public int getPages() {
+        return pages;
     }
 
     public void setPages(int pages) {

@@ -22,20 +22,20 @@ public class Learn {
         return user;
     }
 
-    public Deck getDeck() {
-        return deck;
-    }
-
-    public ArrayList<LearnCard> getLearnCards() {
-        return learnCards;
-    }
-
     public void setUser(User user) {
         this.user = user;
     }
 
+    public Deck getDeck() {
+        return deck;
+    }
+
     public void setDeck(Deck deck) {
         this.deck = deck;
+    }
+
+    public ArrayList<LearnCard> getLearnCards() {
+        return learnCards;
     }
 
     public void setLearnCards(ArrayList<LearnCard> learnCards) {

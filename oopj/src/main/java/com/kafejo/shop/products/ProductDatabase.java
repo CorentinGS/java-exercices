@@ -29,16 +29,11 @@ public class ProductDatabase {
     }
 
     public Product getProductByName(String name) {
-        return this.products.stream()
-                .filter(product -> product.getName().equals(name))
-                .findFirst()
-                .orElse(null);
+        return this.products.stream().filter(product -> product.getName().equals(name)).findFirst().orElse(null);
     }
 
     public Set<Product> getProductsByPriceRange(double min, double max) {
-        return this.products.stream()
-                .filter(product -> product.getPrice() >= min && product.getPrice() <= max)
-                .collect(Collectors.toSet());
+        return this.products.stream().filter(product -> product.getPrice() >= min && product.getPrice() <= max).collect(Collectors.toSet());
     }
 
 }
